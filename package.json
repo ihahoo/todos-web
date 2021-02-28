@@ -1,0 +1,97 @@
+{
+  "name": "todos-web",
+  "version": "0.1.0",
+  "description": "A react boilerplate based on CRA",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "url": "Ray Guo/todos-web",
+    "type": "git"
+  },
+  "template": "cra-redux",
+  "files": [
+    "bin",
+    "dist",
+    "mock",
+    "typings"
+  ],
+  "config-overrides-path": "node_modules/@36node/sketch/config-overrides",
+  "main": "dist/index.js",
+  "typings": "typings/index.d.ts",
+  "scripts": {
+    "build": "REACT_APP_VERSION=$npm_package_version sketch build",
+    "clean": "sketch clean",
+    "format": "prettier --trailing-comma es5 --write 'src/**/*.js'",
+    "lint": "sketch lint src",
+    "release": "standard-version",
+    "server": "serve -s build",
+    "start": "REACT_APP_VERSION=$npm_package_version sketch start",
+    "test": "sketch test --env=jsdom",
+    "styleguide": "styleguidist server --config node_modules/@36node/sketch/styleguide.config.js",
+    "styleguide:build": "styleguidist build --config node_modules/@36node/sketch/styleguide.config.js"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run lint && CI=true NODE_ENV=test npm run test"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run format",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "@36node/browserslist-config": "^0.1.2",
+    "@36node/eslint-config": "^0.6.4",
+    "@36node/sketch": "^0.15.4",
+    "@commitlint/cli": "^6.1.0",
+    "@commitlint/config-conventional": "^6.1.0",
+    "@types/jest": "^24.0.11",
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.2",
+    "@types/react-responsive": "^3.0.3",
+    "faker": "^4.1.0",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.18.2",
+    "react-styleguidist": "^9.1.13",
+    "standard-version": "^6.0.1"
+  },
+  "dependencies": {
+    "@36node/fetch": "^0.7.0",
+    "@36node/redux": "^0.3.14",
+    "@36node/redux-antd": "^0.2.1",
+    "@36node/redux-session": "^0.1.5",
+    "@36node/redux-xlsx": "^0.1.19",
+    "@36node/template-react-component": "^0.3.60",
+    "@36node/template-sdk": "^0.11.3",
+    "@ant-design/icons": "^4.0.5",
+    "antd": "^4.1.0",
+    "lodash": "^4.17.11",
+    "moment": "^2.29.1",
+    "react": "^16.13.1",
+    "react-dom": "npm:@hot-loader/react-dom",
+    "react-hot-loader": "^4.11.0",
+    "react-loadable": "^5.5.0",
+    "react-redux": "^7.2.0",
+    "react-responsive": "^6.1.1",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.5",
+    "redux-saga": "^1.1.3",
+    "styled-components": "^5.0.1"
+  },
+  "browserslist": [
+    "extends @36node/browserslist-config"
+  ],
+  "gitHead": "1e53e28a221049afdbd3de24cdf0bd40cb9ce13e"
+}
